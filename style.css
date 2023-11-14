@@ -10,6 +10,9 @@ body {
   font-family: "Sono", sans-serif;
   padding: 48px 64px;
 }
+.hidden {
+  display: none !important; /* !important always takes precedence over all other ones that are also applying*/
+}
 /* Main Layout  */
 .container {
   max-width: 1500px;
