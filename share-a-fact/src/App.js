@@ -98,7 +98,7 @@ function isValidHttpUrl(string) {
 function NewFactForm({ setFacts, setShowForm }) {
   const [text, setText] = useState("");
   // Fixed in a video text overlay
-  const [source, setSource] = useState("");
+  const [source, setSource] = useState("http://example.com");
   const [category, setCategory] = useState("");
   const [isUploading, setIsUploading] = useState(false);
   const textLength = text.length;
@@ -230,7 +230,7 @@ function FactList({ facts, setFacts }) {
 function Fact({ fact, setFacts }) {
   const [isUpdating, setIsUpdating] = useState(false);
   const isDisputed =
-    fact.voteInteresting + fact.voteMindblowing < fact.voteFalse;
+    fact.voteInteresting + fact.voteMindBlowing < fact.voteFalse;
 
   async function handleVote(columnName) {
     setIsUpdating(true);
@@ -250,7 +250,9 @@ function Fact({ fact, setFacts }) {
   return (
     <li className="fact">
       <p>
-        {isDisputed ? <span className="disputed">[⛔️ DISPUTED]</span> : null}
+        {isDisputed ? (
+          <span className="disputed">[⛔️ DISPUTED. WRONG INFORMATION]</span>
+        ) : null}
         {fact.text}
         <a className="source" href={fact.source} target="_blank">
           (Source)
